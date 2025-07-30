@@ -12,8 +12,17 @@ export class LoginController {
      * @returns function to serviced
      */
     @Post('/')
-    loginA(@Headers('user_name') user_name: string, @Headers('pass') pass: string): string {
-        return this.loginService.loginS(user_name, pass);
+    async loginA(@Headers('user_name') user_name: string, @Headers('pass') pass: string) {
+        try{
+        const response = await this.loginService.loginS(user_name, pass);
+        if(response['success']){
+            //להכניס אל haders
+            return 
+        }
+        return
+        }catch(err){
+
+        }
     }
 
     // @Post('/')
