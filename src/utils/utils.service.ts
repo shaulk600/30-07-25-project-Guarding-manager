@@ -5,7 +5,7 @@ dotenv.config();
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 
-import { setUserDto } from "../entitis/userToLogin.dto";
+import { setUserDto } from "../entitis/setUser.dto";
 
 @Injectable()
 export class UtilsService {
@@ -31,9 +31,14 @@ export class UtilsService {
         return false;
     }
 
-    
+    /**
+     * 
+     * @param {setUserDto} setUser 
+     * @returns {strung} myToken
+     */
+    //בהמשך נשים 'id' and 'role'
     async createToken(setUser: setUserDto) {
-        const MyToken:string = jwt.sign({ user_name: setUser.user_name, role: setUser.role }, process.env.SECRET_PASS || '', { expiresIn: '1h' });
+        const MyToken: string = await jwt.sign({ user_name: setUser.user_name, role: setUser.role }, process.env.SECRET_PASS || '', { expiresIn: '1h' });
         return MyToken;
     }
 
