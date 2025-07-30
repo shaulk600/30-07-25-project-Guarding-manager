@@ -16,12 +16,17 @@ export class UtilsService {
         return hash;
     }
 
+    /**
+     * a function that return if equals pass hash
+     * @param {string} hashPass 
+     * @returns {boolean} if equals return true
+     */
     compareHash(hashPass: string): boolean {
         const flag = bcrypt.compareSync(hashPass, process.env.SECRET_PASS || '')
         if (flag) { return true; }
         return false;
     }
 
-    
+
 
 }
