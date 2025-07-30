@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
+import { UtilsService } from "../utils/utils.service";
+
 @Injectable()
 export class LoginService {
+    constructor(private utilsService: UtilsService) { }
 
     /**
      * 
@@ -9,11 +12,11 @@ export class LoginService {
      * @param pass 
      * @returns string
      */
-    loginS(user_name:string , pass:string){
+    loginS(user_name: string, pass: string) {
         console.log(user_name + " " + pass);
-        return 'jgjgj'
+        return 'passB';
     }
 
-    
+
 
 }
