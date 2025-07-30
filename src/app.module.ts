@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { LoginModule } from './login/login.module';
 import { UtilsModule } from './utils/utils.module';
 
+import * as jwt from "@nestjs/jwt";
+
 @Module({
   imports: [LoginModule, UtilsModule],
   controllers: [AppController],

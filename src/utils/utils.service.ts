@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import * as bcrypt from "bcrypt";
+
 import * as dotenv from "dotenv";
 dotenv.config();
+import * as bcrypt from "bcrypt";
+import * as jwt from "jsonwebtoken";
+
+import { setUserDto } from "../entitis/userToLogin.dto";
 
 @Injectable()
 export class UtilsService {
@@ -27,6 +31,11 @@ export class UtilsService {
         return false;
     }
 
+    
+    async createToken(setUser: setUserDto) {
+        const MyToken:string = jwt.sign({ user_name: setUser.user_name, role: setUser.role }, process.env.SECRET_PASS || '', { expiresIn: '1h' });
+        return MyToken;
+    }
 
 
 }
